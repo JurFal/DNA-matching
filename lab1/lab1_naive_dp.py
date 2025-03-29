@@ -76,9 +76,7 @@ def print_results(repeats, title):
     print(f"找到 {len(filtered_repeats)} 个{title}（长度≥{threshold*2}）：")
     for i, repeat in enumerate(filtered_repeats, 1):  # 输出所有结果，不限制为前10个
         print(f"{title} {i}:")
-        print(f"  长度: {repeat['length']}")
-        print(f"  参考序列位置: {repeat['ref_position']}")
-        print(f"  查询序列位置: {repeat['query_position']}")
+        print(f"  长度: {repeat['length']}  参考序列位置: {repeat['ref_position']}  查询序列位置: {repeat['query_position']}")
         print(f"  片段: {repeat['segment'][:50]}{'...' if len(repeat['segment']) > 50 else ''}")
         print()
 
@@ -91,9 +89,7 @@ def write_results_to_file(repeats, title, file):
     file.write(f"找到 {len(filtered_repeats)} 个{title}（长度≥{threshold*2}）：\n")
     for i, repeat in enumerate(filtered_repeats, 1):  # 输出所有结果，不限制为前10个
         file.write(f"{title} {i}:\n")
-        file.write(f"  长度: {repeat['length']}\n")
-        file.write(f"  参考序列位置: {repeat['ref_position']}\n")
-        file.write(f"  查询序列位置: {repeat['query_position']}\n")
+        file.write(f"  长度: {repeat['length']}  参考序列位置: {repeat['ref_position']}  查询序列位置: {repeat['query_position']}")
         file.write(f"  片段: {repeat['segment'][:50]}{'...' if len(repeat['segment']) > 50 else ''}\n")
         file.write("\n")
 
@@ -146,7 +142,6 @@ def main():
         result_file.write("\n=== 反向互补重复片段 ===\n")
         write_results_to_file(complement_repeats, "反向互补重复片段", result_file)
     
-    print(f"\n结果已保存到文件: {result_file_path}")
 
 if __name__ == "__main__":
     main()
