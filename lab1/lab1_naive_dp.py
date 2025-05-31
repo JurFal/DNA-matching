@@ -21,20 +21,11 @@ def find_repeats(reference, query):
     # 创建动态规划表，dp[i][j]表示以reference[i]和query[j]结尾的最长公共子串长度
     dp = [[0 for _ in range(query_len + 1)] for _ in range(ref_len + 1)]
     
-    # 记录最长重复片段的长度和位置
-    max_length = 0
-    max_ref_end = 0
-    max_query_end = 0
-    
     # 填充动态规划表
     for i in range(1, ref_len + 1):
         for j in range(1, query_len + 1):
             if reference[i-1] == query[j-1]:
                 dp[i][j] = dp[i-1][j-1] + 1
-                if dp[i][j] > max_length:
-                    max_length = dp[i][j]
-                    max_ref_end = i
-                    max_query_end = j
     
     # 找出所有重复片段（长度大于等于10的子串）
     repeats = []
